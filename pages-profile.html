@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Vegetable Freshness Monitoring System</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/tripleT.png">
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+</head>
+
+<body class="fix-header card-no-border fix-sidebar">
+
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Triple T</p>
+        </div>
+    </div>
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="pages-profile.html">
+                        <b>
+                            <img src="assets/images/logotripleT.png" alt="homepage" class="dark-logo" />
+                        </b>
+                        <span>
+                            <img src="assets/images/logo-text1.png" alt="homepage" class="dark-logo" />
+						<span>
+                    </a>
+                </div>
+
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark"
+                                href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+						<li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i
+                                    class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="control.html" aria-expanded="false"><i
+                                    class="fa fa-tachometer"></i><span class="hide-menu">Control RGB</span></a>
+                        </li>
+
+                        <li> <a class="waves-effect waves-dark" href="Line_chart.html" aria-expanded="false"><i
+                                    class="fa fa-table"></i><span class="hide-menu">Line Chart</span></a>
+                        </li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Profile</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Profile</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <center class="mt-4"> <img src="assets/images/users/Hieu.jpg"
+                                        width="150" />
+                                    <h4 class="card-title mt-2">Pham Ngoc Hieu</h4>
+                                    <div class="row text-center justify-content-md-center">
+                                    </div>
+                                </center>
+								<center class="mt-4"> <img src="assets/images/users/Son.jpg"
+                                        width="150" />
+                                    <h4 class="card-title mt-2">Tran Hoang Son</h4>
+                                    <div class="row text-center justify-content-md-center">
+                                    </div>
+                                </center>
+                                <center class="mt-4"> <img src="assets/images/users/Nguyen.jpg"
+                                        width="150" />
+                                    <h4 class="card-title mt-2">Cao Le Nguyen</h4>
+                                    <div class="row text-center justify-content-md-center">
+                                    </div>
+                                </center>
+								<center class="mt-4"> <img src="assets/images/users/Thanh.jpg"
+                                        width="150" />
+                                    <h4 class="card-title mt-2">Tong Thi Phuong Thanh</h4>
+                                    <div class="row text-center justify-content-md-center">
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+						<div class="col-lg-8 d-flex align-items-stretch">
+                        <div class="card w-100">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        <h5 class="card-title">List of Members</h5>
+                                    </div>
+                                </div>
+                                <div class="table-responsive mt-3 no-wrap">
+                                    <table class="table vm no-th-brd pro-of-month">
+                                        <thead>
+                                            <tr>
+                                                <th>NO.</th>
+                                                <th>Name</th>
+                                                <th>ID Student</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Pham Ngoc Hieu</td>
+                                                <td>18146299</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Tran Hoang Son</td>
+                                                <td>18146366</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Cao Le Nguyen</td>
+                                                <td>18146348</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Tong Thi Phuong Thanh</td>
+                                                <td>18146368</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="mt-4">
+                                        <div class="d-flex justify-content-center links">
+                                            <a href="login.html" class="btn btn-primary">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/node_modules/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/node_modules/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+</body>
+
+</html>

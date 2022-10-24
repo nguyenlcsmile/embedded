@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- chỉ định mã hóa tài liệu HTML -->
+    <meta charset="utf-8">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Vegetable Freshness Monitoring System</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/tripleT.png">
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/node_modules/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="assets/node_modules/morrisjs/morris.css" rel="stylesheet">
+    <!--c3 CSS -->
+    <link href="assets/node_modules/c3-master/c3.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="css/pages/dashboard1.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Triple T</p>
+        </div>
+    </div>
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="pages-profile.html">
+                        <b>
+                            <img src="assets/images/logotripleT.png" alt="homepage" class="dark-logo" />
+                        </b>
+                            <span>
+                            <img src="assets/images/logo-text1.png" alt="homepage" class="dark-logo" />
+                            </span>
+                    </a>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark"
+                                href="javascript:void(0)"><i class="fa fa-bars"></i></a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i
+                                    class="fa fa-user-circle-o"></i><span class="hide-menu">Profile</span></a>
+                        </li>
+                      
+                        <li> <a class="waves-effect waves-dark" href="control.html" aria-expanded="false"><i
+                                    class="fa fa-table"></i><span class="hide-menu">Control RGB</span></a>
+                        </li>
+
+                        <li> <a class="waves-effect waves-dark" href="Line_chart.html" aria-expanded="false"><i
+                                    class="fa fa-table"></i><span class="hide-menu">Line Chart</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Dashboard</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Line Chart</li>
+                        </ol>
+                    </div>
+
+                </div>
+                <form action="readtime.php" method = "POST">
+                    <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card card-body mailbox">
+                            <h5 class="card-title">Temperature and Humidity</h5>
+                                <div class="message-center" style="height: 420px !important;">
+                                    <div class="card-body">
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                <!-- <div class="form-group">
+                                        <input type="submit" class="btn btn-primary" value="Update">
+                                </div> -->
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card card-body mailbox">
+                                <h4 class="card-title">Monitoring Table</h4>
+                                <div class="table-responsive">
+                                    <table class="table" id = "table-to-refresh">
+                                    <tr>
+                                                <td class="table_titles">No</td>
+                                                <td class="table_titles">Time</td>
+                                                <td class="table_titles">Temperature(°C)</td>
+                                                <td class="table_titles">Huminity(%)</td>
+                                    </tr> 
+                                    <tr>
+                                        <td id = "td1[0]"> </td>
+                                        <td id = "td2[0]"> </td>
+                                        <td id = "td3[0]"> </td>
+                                        <td id = "td4[0]"> </td>
+                                    </tr>
+                                    <tr>
+                                        <td id = "td1[1]"> </td>
+                                        <td id = "td2[1]"> </td>
+                                        <td id = "td3[1]"> </td>
+                                        <td id = "td4[1]"> </td>
+                                    </tr>
+                                    <tr>
+                                        <td id = "td1[2]"> </td>
+                                        <td id = "td2[2]"> </td>
+                                        <td id = "td3[2]"> </td>
+                                        <td id = "td4[2]"> </td>
+                                    </tr>
+                                    <tr>
+                                        <td id = "td1[3]"> </td>
+                                        <td id = "td2[3]"> </td>
+                                        <td id = "td3[3]"> </td>
+                                        <td id = "td4[3]"> </td>
+                                    </tr>
+                                    <tr>
+                                        <td id = "td1[4]"> </td>
+                                        <td id = "td2[4]"> </td>
+                                        <td id = "td3[4]"> </td>
+                                        <td id = "td4[4]"> </td>
+                                    </tr>
+                                    <tr>
+                                        <td id = "td1[5]"> </td>
+                                        <td id = "td2[5]"> </td>
+                                        <td id = "td3[5]"> </td>
+                                        <td id = "td4[5]"> </td>
+                                    </tr>
+                                    <tr>
+                                        <td id = "td1[6]"> </td>
+                                        <td id = "td2[6]"> </td>
+                                        <td id = "td3[6]"> </td>
+                                        <td id = "td4[6]"> </td>
+                                    </tr>
+                                    </table>
+                                </div>  
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center links">
+                            <a href="login.html" class="btn btn-primary">Logout</a>
+                        </div>
+                    </div>
+                        <!-- <input type="submit" class="btn btn-primary" value="Update"> -->
+                    </form>
+                </div>
+        </div>
+    </div>
+    <script src="assets/node_modules/jquery/jquery.min.js"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="assets/node_modules/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script src="assets/node_modules/raphael/raphael-min.js"></script>
+    <script src="assets/node_modules/morrisjs/morris.min.js"></script>
+    <!-- Chart JS -->
+    <script src="js/dashboard1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+<script>
+
+    var data1 = [];
+    var data2 = [];
+    var label = [];
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: label,
+        datasets: [{
+            label: 'Temperature',
+            data: data1,
+            backgroundColor: 'rgba(0, 99, 132, 0.2)',
+            borderColor: 'rgba(0, 99, 132, 1)',
+        }, 
+        {
+            label: 'Humidity',
+            data: data2,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+        }
+        ]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+    });
+
+    // load data tu database
+    $(document).ready(function(){
+        updateChart();
+    });
+    setInterval(updateChart,2000);
+    function updateChart(){
+        // gui request xuong database de lay data
+        $.post('getdata.php',function(data){
+            var label = [];
+            var data1 = [];
+            var data2 = [];
+            for(var i in data){
+                label.push(data[i].id);
+                data1.push(data[i].temperature);
+                data2.push(data[i].humidity);
+            }
+            // console.log(data1)
+            myChart.data.labels = label;
+            myChart.data.datasets[0].data = data1;
+            myChart.data.datasets[1].data = data2;
+            myChart.update();
+        })
+}
+</script>
+
+<script>
+    // Find a <table> element with id="myTable":
+    var table = document.getElementById("table_id");
+    var tbody = document.getElementById("myTBody");
+    
+    $(document).ready(function(){
+        $('#table_id').DataTable();
+    });
+
+</script>
+
+<script>
+    $(document).ready(function(){
+        function getData(){
+            $.ajax({
+                type: 'POST',
+                url: 'Line_chart.html',
+                success: function(data){
+                    $('#output').html(data);
+                }
+            });
+        }
+        setInterval(getData, 20000);
+        $(function() {getData();});
+        });
+</script>
+<script type="text/javascript">
+        $(document).ready(function () {
+        $(document).on('click', '.refresher', function () {
+        $.ajax({
+        url: 'Line_chart.html',
+        method: "GET",
+        dataType: 'json',
+        success: function(response) {
+           $('#table-to-refresh').html(response);
+        }
+        });
+        });
+        });
+</script>
+<script>
+    $(document).ready(function(){
+        // code update table
+        updateTable();
+    });
+    setInterval(updateTable,1000);
+    function updateTable(){
+        // yeu cau server goi file get_table.php
+        $.post("getdata.php",
+        function(data){
+            var td1 = [];
+            var td2 = [];
+            var td3 = [];
+            var td4 = [];
+            for(var i in data){
+            td1.push(data[i].id);
+            td2.push(data[i].creat_at);
+            td3.push(data[i].temperature);
+            td4.push(data[i].humidity);
+            }
+            // for (let i = 0; i < 8; i++) {
+                // document.getElementById("td1[i]").innerHTML = td1[i];
+                // document.getElementById("td2[i]").innerHTML = td2[i];
+                // document.getElementById("td3[i]").innerHTML = td3[i];
+                // document.getElementById("td4[i]").innerHTML = td4[i];
+            // }
+            document.getElementById("td1[0]").innerHTML = td1[0];
+            document.getElementById("td2[0]").innerHTML = td2[0];
+            document.getElementById("td3[0]").innerHTML = td3[0];
+            document.getElementById("td4[0]").innerHTML = td4[0];
+            
+            document.getElementById("td1[1]").innerHTML = td1[1];
+            document.getElementById("td2[1]").innerHTML = td2[1];
+            document.getElementById("td3[1]").innerHTML = td3[1];
+            document.getElementById("td4[1]").innerHTML = td4[1];
+            
+            document.getElementById("td1[2]").innerHTML = td1[2];
+            document.getElementById("td2[2]").innerHTML = td2[2];
+            document.getElementById("td3[2]").innerHTML = td3[2];
+            document.getElementById("td4[2]").innerHTML = td4[2];
+            
+            document.getElementById("td1[3]").innerHTML = td1[3];
+            document.getElementById("td2[3]").innerHTML = td2[3];
+            document.getElementById("td3[3]").innerHTML = td3[3];
+            document.getElementById("td4[3]").innerHTML = td4[3];
+            
+            document.getElementById("td1[4]").innerHTML = td1[4];
+            document.getElementById("td2[4]").innerHTML = td2[4];
+            document.getElementById("td3[4]").innerHTML = td3[4];
+            document.getElementById("td4[4]").innerHTML = td4[4];
+            
+            document.getElementById("td1[5]").innerHTML = td1[5];
+            document.getElementById("td2[5]").innerHTML = td2[5];
+            document.getElementById("td3[5]").innerHTML = td3[5];
+            document.getElementById("td4[5]").innerHTML = td4[5];
+            
+            document.getElementById("td1[6]").innerHTML = td1[6];
+            document.getElementById("td2[6]").innerHTML = td2[6];
+            document.getElementById("td3[6]").innerHTML = td3[6];
+            document.getElementById("td4[6]").innerHTML = td4[6];
+                
+    })
+}
+
+</script>
+
+
+</body>
+</html>
